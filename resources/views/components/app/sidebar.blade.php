@@ -59,7 +59,7 @@
                                 </svg>
 
 
-                                <span class="ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200"> Inicio </span>
+                                <span class="ml-2 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200"> Dashboard </span>
                             </button>
 
                         </a>

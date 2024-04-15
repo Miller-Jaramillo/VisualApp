@@ -66,11 +66,11 @@
 
 
 
-
+{{-- 
             <div class="col-span-12 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700 ">
                 @livewire('mapas-component')
 
-            </div>
+            </div> --}}
 
 
 
