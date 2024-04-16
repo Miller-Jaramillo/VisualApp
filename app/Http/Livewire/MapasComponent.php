@@ -1,34 +1,71 @@
 <?php
 
+
 namespace App\Http\Livewire;
 
+
 use GuzzleHttp\Client;
-use Livewire\Component;
+
 use App\Models\Archivo;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
+
+
 
 class MapasComponent extends Component
 {
-    public $page = 1; // Página inicial
-    public $perPage = 10; // Cantidad de marcadores por página
+    public $year = '2024'; // Año inicial
 
+    protected $listeners = ['yearSelected'];
+
+    public $data;
+
+    public $coordenadas;
 
     public function render()
     {
-
-        $coordenadas = Archivo::select('direccion', DB::raw('COUNT(*) as total_accidentes'))
-    ->groupBy('direccion')
-    ->orderByRaw('COUNT(*) DESC')
-    ->limit(5) // Obtener las 5 direcciones más frecuentes
-    ->get()
-    ->map(function ($archivo) {
-        return $this->geocodificarDireccion($archivo->direccion, $archivo->total_accidentes);
-    })
-    ->filter();
-
-
-    return view('livewire.mapas-component', compact('coordenadas'));
+        $this->loadData();
+        return view('livewire.mapas-component');
     }
+
+    public function mount()
+    {
+        $this->loadData();
+        $this->emit('updateMapa', ['coordenadas' => $this->coordenadas]);
+
+    }
+
+    public function yearSelected($selectedYear)
+    {
+        $this->year = $selectedYear;
+        $this->loadData();
+        $this->emit('updateMapa', ['coordenadas' => $this->coordenadas]);
+
+
+    }
+
+    private function loadData()
+    {
+
+
+        $this->coordenadas = Archivo::select('direccion', DB::raw('COUNT(*) as total_accidentes'))
+        ->whereYear('fecha', $this->year)
+        ->groupBy('direccion')
+        ->orderByRaw('COUNT(*) DESC')
+        ->limit(5) // Obtener las 5 direcciones más frecuentes
+        ->get()
+        ->map(function ($archivo) {
+            return $this->geocodificarDireccion($archivo->direccion, $archivo->total_accidentes);
+        })
+        ->filter();
+
+        $this->emit('updateMapa', ['coordenadas' => $this->coordenadas]);
+
+
+
+    }
+
+
 
     private function geocodificarDireccion($direccion, $totalAccidentes)
     {
@@ -63,8 +100,6 @@ class MapasComponent extends Component
         return null;
     }
 
-    public function loadMore()
-    {
-        $this->page++;
-    }
+
+
 }

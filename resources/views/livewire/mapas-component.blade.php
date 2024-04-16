@@ -1,16 +1,13 @@
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<!-- Agregar Leaflet.markercluster CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-
-<div class="max-w-7xl mx-auto  lg:px-12 px-12 sm:px-12 bg-white dark:bg-slate-950 ">
+<div>
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Ubicaciones con mas accidentes</h2>
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Mapa de accidentes -
+            Año {{ $year }}</h2>
+            <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">Esta vista muestra un mapa interactivo
+                que visualiza las 5 ubicaciones con más accidentes registrados en un área específica para cada año seleccionado.
+                Al elegir un año en el filtro, el mapa se actualiza para mostrar las 5 ubicaciones con más accidentes ocurridos en ese año, con marcadores que indican la dirección, el barrio y el número de accidentes en cada ubicación. La información en el mapa se actualiza dinámicamente según la selección del usuario, lo que permite analizar la distribución y la frecuencia de los accidentes en diferentes años..</p>
     </header>
-    <div id="maps-component" class="px-10 py-3">
-        <!-- Mapa Leaflet -->
-        <div id="map" style="height: 500px;"></div>
-    </div>
+
+
     <div class="grow" style="max-width: 100%; overflow: hidden; margin: auto;">
         <div style="overflow-x: auto; padding-right: 15px; padding-left: 15px;">
             <!-- ... Tu tabla existente ... -->
@@ -54,52 +51,64 @@
 
                             {{-- <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $coor['latitud'] }}</td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $coor['longitud'] }}</td> --}}
-                      
+
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+
+        <!-- Mapa Leaflet -->
+        <div id="map" style="height: 500px;"></div>
+
 </div>
 
-<!-- Agregar Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 
 <!-- Agregar Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Coordenadas obtenidas desde el backend
-        const coordenadas = {!! json_encode($coordenadas) !!};
+ document.addEventListener('livewire:load', function() {
+    let map = null; // Referencia al mapa Leaflet
 
-        // Crear mapa
-        const map = L.map('map').setView([1.2136, -77.2811],
-        15); // Centro del mapa (latitud y longitud), y nivel de zoom
+    Livewire.on('updateMapa', ({ coordenadas }) => {
+        // Destruir el mapa existente si existe
+        if (map) {
+            map.remove();
+        }
 
-        // Agregar capa de mapa base (puedes elegir otro proveedor de mapas)
+        // Crear un nuevo mapa y añadir los marcadores
+        map = L.map('map').setView([1.2136, -77.2811], 15);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
         const accidentIcon = L.icon({
-            iconUrl: '{{ asset('images/accident2.png') }}', // Ruta al ícono personalizado
-            iconSize: [48, 48], // Ajusta el tamaño del ícono según sea necesario
-            iconAnchor: [16, 32], // Ajusta la posición del ancla del ícono si es necesario
-            popupAnchor: [0, -32] // Ajusta la posición del popup del ícono si es necesario
+            iconUrl: '{{ asset('images/accident2.png') }}',
+            iconSize: [48, 48],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
         });
 
         coordenadas.forEach(coor => {
-            // Usa el ícono personalizado para los marcadores
-            L.marker([coor.latitud, coor.longitud], {
-                    icon: accidentIcon
-                }).addTo(map)
+            L.marker([coor.latitud, coor.longitud], { icon: accidentIcon })
+                .addTo(map)
                 .bindPopup(
                     `<b>Dirección:</b> ${coor.direccion}<br><b>Barrio:</b> ${coor.barrio}<br><b>Accidentes:</b> ${coor.totalAccidentes}`
-                    )
+                )
                 .openPopup();
         });
     });
+
+    Livewire.emit('updateMapa', {
+        coordenadas: @json($coordenadas)
+    });
+});
+
 </script>

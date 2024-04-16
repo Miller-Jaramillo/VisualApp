@@ -5,12 +5,14 @@ use App\Http\Controllers\DashboardCard04;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardMapaController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Livewire\Admin\RegistrosComponent;
 use App\Http\Livewire\Admin\RegistrosTableComponent;
 use App\Http\Livewire\AnuncioComponent;
 use App\Http\Livewire\InicioComponent;
 use App\Http\Livewire\MapasComponent;
+use App\Http\Livewire\SelectMapaComponent;
 use App\Http\Livewire\UsersTableComponent;
 
 /*
@@ -55,9 +57,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/registros', RegistrosTableComponent::class)->middleware('soloAdmin')->name('registros');
 
-    Route::get('/mapas', MapasComponent::class)->middleware('verificarArchivo')->name('mapas');
-
-
+    Route::get('/mapas', [DashboardMapaController::class, 'index'])->middleware('verificarArchivo')->name('mapas');
     Route::get('/anuncio', AnuncioComponent::class)->name('anuncio');
 
 

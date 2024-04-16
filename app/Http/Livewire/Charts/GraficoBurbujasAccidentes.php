@@ -15,10 +15,17 @@ class GraficoBurbujasAccidentes extends Component
 
     public $data;
 
+
+    public $lesionMasAccidentes;
+    public $lesionMenosAccidentes;
+    public $edadPromedioPorLesion;
+    public $lesionMenorEdad;
+    public $lesionMayorEdad;
+
     public function render()
     {
         $this->loadData();
-
+        $this->calculateAnalysis();
         return view('livewire.charts.grafico-burbujas-accidentes');
     }
 
@@ -34,6 +41,7 @@ class GraficoBurbujasAccidentes extends Component
     {
         $this->year = $selectedYear;
         $this->loadData();
+        $this->calculateAnalysis();
         $this->emit('updateGraficoBusrbujas', ['data' => $this->data]);
     }
 
@@ -47,6 +55,26 @@ class GraficoBurbujasAccidentes extends Component
 
         $this->emit('updateGraficoBusrbujas', ['data' => $this->data]);
     }
+
+    public function calculateAnalysis()
+    {
+        $lesionesGrouped = $this->data->groupBy('lesion');
+
+        $this->lesionMasAccidentes = $lesionesGrouped->sortByDesc->sum('total')->keys()->first();
+        $this->lesionMenosAccidentes = $lesionesGrouped->sortBy->sum('total')->keys()->first();
+
+        $this->edadPromedioPorLesion = $lesionesGrouped->map(function ($items) {
+            return $items->sum('total') > 0 ?
+                $items->sum(function ($item) {
+                    return $item['edad'] * $item['total'];
+                }) / $items->sum('total') : 0;
+        });
+
+        $this->lesionMenorEdad = $this->edadPromedioPorLesion->sort()->keys()->first();
+        $this->lesionMayorEdad = $this->edadPromedioPorLesion->sortDesc()->keys()->first();
+    }
+
+
 
 
 
