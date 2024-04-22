@@ -1,9 +1,22 @@
 <div
     class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Cantidad de accidentes por Clase y Genero -
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Clase y Género -
             Año {{ $year }}</h2>
+
+            <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">
+
+
+                Este gráfico de barras apiladas muestra la distribución de accidentes según la clase de accidente y el género de las víctimas para el año seleccionado.
+                Cada barra representa una clase de accidente, dividida en segmentos que representan la cantidad de accidentes para cada género. El gráfico proporciona una visualización clara y detallada de cómo se distribuyen los accidentes entre diferentes clases y géneros, lo que puede ayudar a identificar patrones y áreas de enfoque para la prevención de accidentes.
+
+
+            </p>
+
     </header>
+
+
+
 
 
     <!-- Botón de ojo para ocultar/mostrar información -->
@@ -14,7 +27,7 @@
 
     <!-- Información importante inicialmente oculta -->
     <div id="informacionImportanteClaseGenero" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de barras apiladas:</p>
+        <p>Análisis de la gráfica de distribución de Accidentes por Clase y Género:</p>
         <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
 
         <li> <strong>Total de accidentes:</strong> {{ $data->sum('total') }}</li>

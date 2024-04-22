@@ -1,9 +1,19 @@
 <div
     class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Cantidad de accidentes por Dia y Genero -
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de accidentes por día según género -
             Año {{ $year }}</h2>
+
+            <p class="text-slate-600 text-xs dark:text-slate-400 text-justify mt-2">
+            Este gráfico de barras muestra la distribución de accidentes registrados durante el año Año {{ $year }}, clasificados por día de la semana y género de las víctimas.
+            Cada barra representa un día de la semana, y la altura de la barra indica la cantidad de accidentes registrados para ese día. Se resalta el día con la mayor y menor cantidad de accidentes, así como el género más y menos accidentado. Esta visualización proporciona una visión detallada de cómo se distribuyen los accidentes según el día de la semana y el género de las víctimas en el año seleccionado.
+            </p>
+
     </header>
+
+
+
+
 
 
     <!-- Botón de ojo para ocultar/mostrar información -->
@@ -14,7 +24,7 @@
 
     <!-- Información importante inicialmente oculta -->
     <div id="informacionImportanteAccidentesDia" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de barras apiladas:</p>
+        <p>Análisis de la gráfica de distribución de accidentes por día según género:</p>
         <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
 
         <li> <strong>Días que representa la gráfica con su total de accidentes:</strong>
@@ -33,7 +43,7 @@
         </li>
         <li> <strong>Días con menos accidentes en la semana:</strong>
             @foreach($diaMenosAccidentado as $diaMenos)
-                {{ $diaMenos }} 
+                {{ $diaMenos }}
             @endforeach
         </li>
 

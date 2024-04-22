@@ -10,7 +10,8 @@ class Archivo extends Model
     use HasFactory;
     protected $table = 'archivos';
 
-    protected $fillable = ['fecha', 'direccion', 'barrio', 'comuna', 'codigo_postal', 'edad', 'genero', 'tipo_victima', 'clase_accidente', 'caso_accidente', 'lesion', 'hipotesis', 'registro_id',
+    protected $fillable = [
+        'fecha', 'direccion', 'barrio', 'comuna', 'codigo_postal', 'edad', 'genero', 'tipo_victima', 'clase_accidente', 'caso_accidente', 'lesion', 'hipotesis', 'registro_id',
     'estado_victima',
     'dia',
     'hora',

@@ -1,10 +1,9 @@
 <div class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Histograma de Edades de Víctimas de Accidentes - Año
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Edad - Año
             {{ $year }}</h2>
-        <p class="text-slate-600 text-xs dark:text-slate-400 mt-2">El histograma de edades tiene como objetivo
-            representar visualmente la distribución de edades de las víctimas de accidentes, permitiendo identificar
-            patrones y tendencias en las edades de las víctimas.</p>
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2"> Este histograma muestra la distribución de accidentes según las edades de las víctimas para un año específico.
+            Cada barra representa un rango de edades y la altura de la barra indica la cantidad de accidentes ocurridos en ese rango. El histograma también destaca la edad con más accidentes, la edad con menos accidentes, la edad promedio y la edad mediana de las víctimas. Los datos se actualizan dinámicamente al seleccionar un año diferente.</p>
     </header>
 
 
@@ -16,7 +15,7 @@
 
     <!-- Información importante inicialmente oculta -->
     <div id="importantInfoHistograma" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de Histograma:</p>
+        <p>Análisis de la gráfica de distribución de Accidentes por Edad:</p>
         <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
         <li>
             <strong>Edades con más accidentes:</strong>
@@ -51,7 +50,7 @@
 
     <div class="grow" style="max-width: 100%; overflow: hidden; margin: auto;">
         <div style="overflow-x: auto; padding-right: 15px; padding-left: 15px;">
-            <canvas id="chart-histograma-accidentes" width="800" height="300"></canvas>
+            <canvas id="chart-histograma-accidentes" width="1000" height="300"></canvas>
         </div>
     </div>
 

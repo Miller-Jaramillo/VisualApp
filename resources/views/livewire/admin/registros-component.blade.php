@@ -1,6 +1,14 @@
-<div wire:poll.5000ms>
+<div>
     <header class="px-5 py-4 border-b border-slate-400 dark:border-slate-700">
         <h2 class="font-semibold  tracking-wider text-slate-800 dark:text-slate-100">Nuevo registro</h2>
+
+        <div class="mt-2">
+            <X-button id="btnTutorial"
+                class="px-3 py-2 mt-2 mb-4 text-xs bg-blue-500 text-gray-100 dark:bg-blue-500 dark:text-gray-100 rounded-md
+                        hover:bg-green-600 dark:hover:bg-green-600">
+                <i class="far fa-eye"></i> ¿COMO DEBO SUBIR UN REGISTRO?
+            </X-button>
+        </div>
     </header>
 
     <div>
@@ -16,6 +24,12 @@
 
     <div class="bg-gray-100 dark:bg-slate-950 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
+
+
+
+
+
+
 
             <div class="">
                 <div class="dark:bg-slate-950 bg-slate-100 rounded shadow-lg p-4 px-4 md:p-8 mb-6 ">
@@ -37,6 +51,9 @@
                         @endif
 
 
+                        <div id="infoTutorial" style="display: none;" class="pb-5">
+                           @include('tutorial-base')
+                        </div>
 
                         <form wire:submit.prevent="cargarBase">
 
@@ -124,44 +141,29 @@
         </div>
     </div>
 
-    {{-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-32 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-4 sm:px-6 pb-2 grid grid-cols-2">
 
-            <div>
-
-                <div class="form-group mt-2">
-                    <x-select wire:model="registroId" wire:change="contarMujeresAccidentadas" class="form-control">
-                        <option value="">Selecciona un registro</option>
-                        @foreach ($registros as $registro)
-                            <option value="{{ $registro->id }}">{{ $registro->nombre_registro }}</option>
-                        @endforeach
-                    </x-select>
-                </div>
-
-                @if ($registroId)
-                    <x-label> Conteo de mujeres accidentadas para el Registro seleccionado:
-                        {{ $conteoMujeres }}</x-label>
-
-
-                    <x-label>Conteo de mujeres accidentadas para el Registro seleccionado:
-                        {{ $conteoHombres }}
-                    </x-label>
-                @endif
-            </div>
-
-            <div>
-                <h1>
-                    EL NUMERO TOTAL DE MUJERES ACCIDENTADAS ES {{ $numeroMujeres }}
-                </h1>
-
-                <h1>
-                    EL NUMERO TOTAL DE HOMBRES ACCIDENTADOS ES {{ $numeroHombres }}
-                </h1>
-            </div>
-        </div>
-    </div> --}}
 
 </div>
+
+
+<script>
+    // Agregar evento clic al botón para mostrar/ocultar información
+    document.addEventListener('click', function(event) {
+        const btnTutorial = document.getElementById('btnTutorial');
+        const infoTutorial = document.getElementById('infoTutorial');
+
+        if (event.target === btnTutorial) {
+            const isInfoVisible = infoTutorial.style.display !== 'none';
+            infoTutorial.style.display = isInfoVisible ? 'none' : 'block';
+            btnTutorial.innerHTML = isInfoVisible ?
+                '<i class="far fa-eye"></i> Mostrar Información' :
+                '<i class="far fa-eye-slash"></i> Ocultar Información';
+        } else if (event.target !== infoTutorial && !infoTutorial.contains(event.target)) {
+            infoTutorial.style.display = 'none';
+            btnTutorial.innerHTML = '<i class="far fa-eye"></i> Mostrar Información';
+        }
+    });
+</script>
 
 
 

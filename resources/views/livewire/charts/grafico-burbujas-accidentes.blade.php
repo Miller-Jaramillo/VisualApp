@@ -1,7 +1,14 @@
 <div
     class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Gráfico de Burbujas - Año {{ $year }}</h2>
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Edad y Tipo de Lesión en Accidentes - Año {{ $year }}</h2>
+
+
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">
+            El gráfico de burbujas muestra la distribución de la edad de las víctimas de accidentes y el tipo de lesión sufrida. Cada burbuja representa un tipo de lesión, donde el tamaño de la burbuja indica la cantidad de accidentes y la posición vertical representa la edad promedio de las víctimas para ese tipo de lesión.
+            El análisis revela la lesión más común, la menos común, la edad promedio más baja y la más alta en función de los datos recopilados para el año seleccionado.
+            </p>
+
     </header>
 
 
@@ -13,7 +20,7 @@
 
     <!-- Información importante inicialmente oculta -->
     <div id="informacionImportateBurbujas" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de burbujas:</p>
+        <p>Análisis de la gráfica de distribución de Edad y Tipo de Lesión en Accidentes:</p>
 
         <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
 
@@ -41,7 +48,7 @@
 
     <div class="grow" style="max-width: 100%; overflow: hidden; margin: auto;">
         <div style="max-width: 100%; overflow: hidden; margin: auto;">
-            <canvas id="chart-bubbles" width="800" height="400"></canvas>
+            <canvas id="chart-bubbles" width="1000" height="400"></canvas>
         </div>
     </div>
 </div>

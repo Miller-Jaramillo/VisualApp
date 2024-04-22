@@ -2,10 +2,10 @@
     class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
 
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Clase de Accidente por género -Año:
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Género  -Año:
             {{ $year }}</h2>
-        <p class="text-slate-600 text-xs dark:text-slate-400 mt-2">Este gráfico muestra la cantidad de accidentes por
-            genero.</p>
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">Este gráfico de pastel muestra la distribución de accidentes registrados en el año {{ $year }} según el género de las víctimas.
+            Las dos categorías representadas son "Mujeres" y "Hombres", con cada porción del pastel indicando el porcentaje de accidentes en los que estuvieron involucradas víctimas de ese género. Este gráfico proporciona una perspectiva visual clara de cómo se distribuyen los accidentes viales entre hombres y mujeres durante el año seleccionado.</p>
 
     </header>
     <!-- Agrega un elemento select para seleccionar el registro -->
@@ -19,7 +19,7 @@
     <!-- Información importante inicialmente oculta -->
     <div id="informacionImportantePastel" class="px-5 py-4 text-xs" style="display: none;">
         <div>
-            <p>Análisis de la gráfica de pastel:</p>
+            <p>Análisis de la gráfica de distribución de Accidentes por Género :</p>
             <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
 
             <li>Cantidad de mujeres accidentadas: {{ $conteoMujeres }}</li>

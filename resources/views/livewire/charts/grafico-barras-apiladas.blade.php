@@ -1,9 +1,11 @@
 <div
     class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Cantidad de accidentes por clase de accidente y tipo de víctima -  Año {{ $year }}.</h2>
-        <p class="text-slate-600 text-xs dark:text-slate-400 mt-2">Este gráfico muestra la distribución de accidentes según la clase de accidente y el tipo de víctima. Cada barra representa el total de accidentes
-            para una clase específica, y las secciones apiladas dentro de cada barra muestran cómo se dividen esos accidentes entre los diferentes tipos de víctimas.</p>
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Tipo de Víctima y Clase de Accidente  -  Año {{ $year }}.</h2>
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">
+            Este gráfico de barras apiladas muestra la distribución de accidentes según el tipo de víctima y la clase de accidente ocurridos en el año {{ $year }}. Cada barra representa una clase de accidente, dividida en segmentos que representan los diferentes tipos de víctimas involucradas.
+            Los segmentos de cada barra muestran la cantidad de accidentes ocurridos para cada combinación de tipo de víctima y clase de accidente. Utiliza los controles de selección para ver la distribución de accidentes en diferentes años.
+        </p>
     </header>
 
 
@@ -21,7 +23,7 @@
     <!-- Información importante inicialmente oculta -->
 
     <div id="informacionImportanteBarrasApiladas" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de barras apiladas:</p>
+        <p>Análisis de la gráfica de distribución de Accidentes por Tipo de Víctima y Clase de Accidente :</p>
         <div>
             <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
             <li> <strong>Tipo de víctima con más accidentes:</strong> {{ $this->tipoVictimaConMasAccidentes() }}</li>

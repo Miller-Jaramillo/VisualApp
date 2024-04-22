@@ -1,12 +1,10 @@
 <div
     class="flex flex-col col-span-full sm:col-span-12 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Cantidad de Accidentes por Tipo de Víctima y Género -
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Tipo de Víctima y Género -
             Año {{ $year }}</h2>
-        <p class="text-slate-600 text-xs dark:text-slate-400 mt-2">La gráfica de Barras Apiladas por Tipo de Víctima y
-            Género tiene como objetivo representar visualmente la distribución de accidentes en función del tipo de
-            víctima y género, permitiendo identificar patrones y comparar las proporciones de accidentes entre
-            diferentes categorías.</p>
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">Este gráfico de barras apiladas muestra la distribución de accidentes registrados en el año {{ $year }} según el tipo de víctima y el género.
+            Cada barra representa un tipo de víctima (por ejemplo, conductor, pasajero, peatón) y está dividida en segmentos que representan el género (masculino o femenino). La altura de cada segmento indica la cantidad de accidentes asociados a esa combinación de tipo de víctima y género. Además, se resalta el tipo de víctima más común y menos común para cada género, proporcionando una visión detallada de cómo se distribuyen los accidentes en función de estas variables.</p>
     </header>
 
     <!-- Botón de ojo para ocultar/mostrar información -->
@@ -17,7 +15,7 @@
 
     <!-- Información importante inicialmente oculta -->
     <div id="importantInfo" class="px-5 py-4 text-xs" style="display: none;">
-        <p>Análisis de la gráfica de barras apiladas:</p>
+        <p>Análisis de la gráfica de distribución de Accidentes por Tipo de Víctima y Género</p>
         <li> <strong>Resultados obtenidos en el año {{ $year }}.</strong></li>
         <li>
             <strong>Tipo de Víctima con más mujeres:</strong> {{ $tipoVictimaMasMujeres }}

@@ -4,37 +4,42 @@
         <!-- Welcome banner -->
         <x-dashboard.welcome-banner />
 
-        <!-- Dashboard actions -->
-        <div>
 
-            <!-- Left: Avatars -->
-            {{-- <x-dashboard.dashboard-avatars /> --}}
 
-            <!-- Right: Actions -->
-            {{-- <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
-                <!-- Filter button -->
-                <x-dropdown-filter align="right" />
+        <div id="informacionInicial" style="display: none;">
+            @include('introduccion-visualapp')
 
-                <!-- Datepicker built with flatpickr -->
-                <x-datepicker />
+            <div class="mt-2 grid grid-cols-12 gap-6 pb-5">
+                @include('objetivos-visualapp')
 
-                <!-- Add view button -->
-                <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                    <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                        <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                    </svg>
-                    <span class="hidden xs:block ml-2">Add View</span>
-                </button>
+                @include('vision-visualapp')
 
-            </div> --}}
+            </div>
+
+
+
 
         </div>
 
 
+        <div class="flex items-between justify-between pb-5">
 
-        <div class="flex items-center justify-center pb-5 py-5 ">
-            @livewire('select-component')
+            @role('user')
+            <div>
+                <X-button id="btnInfo"
+                    class="px-3 py-2 mt-2 mb-4 text-xs bg-green-500 text-gray-100 dark:bg-green-500 dark:text-gray-100 rounded-md
+                            hover:bg-green-600 dark:hover:bg-green-600">
+                    <i class="far fa-eye"></i> INFORMATE AQUI
+                </X-button>
+            </div>
+            @endrole
+
+
+            <div>
+                @livewire('select-component')
+            </div>
+
         </div>
 
 
@@ -44,6 +49,14 @@
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-6">
 
+            @livewire('charts.barras-accidentes-iluminacion')
+            @livewire('charts.barras-accidentes-estado-via')
+            @livewire('charts.barras-accidentes-superficie-rodaduras')
+            @livewire('charts.barras-accidentes-estado-victima')
+            @livewire('charts.barras-accidentes-condicion-climatica')
+            @livewire('charts.barras-accidentes-sector')
+            @livewire('charts.barras-accidentes-area')
+            @livewire('charts.barras-accidentes-geometria')
             @livewire('charts.grafico-pastel-accidentes')
             @livewire('charts.grafico-pastel-clases-accidentes')
 
@@ -74,3 +87,22 @@
 
     </div>
 </x-app-layout>
+
+<script>
+    // Agregar evento clic al botón para mostrar/ocultar información
+    document.addEventListener('click', function(event) {
+        const btnInfo = document.getElementById('btnInfo');
+        const informacionInicial = document.getElementById('informacionInicial');
+
+        if (event.target === btnInfo) {
+            const isInfoVisible = informacionInicial.style.display !== 'none';
+            informacionInicial.style.display = isInfoVisible ? 'none' : 'block';
+            btnInfo.innerHTML = isInfoVisible ?
+                '<i class="far fa-eye"></i> Mostrar Información' :
+                '<i class="far fa-eye-slash"></i> Ocultar Información';
+        } else if (event.target !== informacionInicial && !informacionInicial.contains(event.target)) {
+            informacionInicial.style.display = 'none';
+            btnInfo.innerHTML = '<i class="far fa-eye"></i> Mostrar Información';
+        }
+    });
+</script>

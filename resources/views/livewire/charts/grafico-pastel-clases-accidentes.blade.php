@@ -1,7 +1,11 @@
 <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-900 shadow-lg rounded-xl border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700 ">
-        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Gráfico de Pastel - Clases de Accidente - Año: {{ $year }}</h2>
-        <p class="text-slate-600 text-xs dark:text-slate-400 mt-2">Este gráfico muestra qué tan comunes son diferentes clases de accidente.</p>
+        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Distribución de Accidentes por Clase - Año: {{ $year }}</h2>
+        <p class="text-slate-600 text-justify text-xs dark:text-slate-400 mt-2">
+            Este gráfico de pastel muestra la distribución de accidentes registrados en el año {{ $year }} según la clase de accidente. Cada segmento del gráfico representa una clase de accidente, y el tamaño del segmento indica la proporción de accidentes en esa clase con respecto al total.
+            La clase de accidente con el segmento más grande es la más común durante el año {{ $year }}, proporcionando una visualización clara de las clases de accidentes más frecuentes.
+
+        </p>
     </header>
 
     <!-- Botón de ojo para ocultar/mostrar información -->
@@ -15,7 +19,7 @@
         <div>
             <strong>Resultados obtenidos en el año {{ $year }}.</strong>
             <li class="flex flex-col text-xs" id="additional-info-pie2"></li>
-            <p  class="mt-2"> <b>  Análisis de la gráfica de pastel:</b></p>
+            <p  class="mt-2"> <b>  Análisis de la gráfica de distribución de Accidentes por Clase</b></p>
             <li><b>Clase con más accidentes:</b> {{ $labels[array_search(max($counts), $counts)] }} ({{ max($counts) }} accidentes)</li>
             <li><b>Clase con menos accidentes:</b> {{ $labels[array_search(min($counts), $counts)] }} ({{ min($counts) }} accidentes)</li>
             {{-- <li>La clase "{{ $labels[array_search(max($counts), $counts)] }}" tiene la mayor cantidad de accidentes, lo que indica que es la más común.</li>
