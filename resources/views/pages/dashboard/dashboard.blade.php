@@ -49,29 +49,34 @@
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-6">
 
-            @livewire('charts.barras-accidentes-iluminacion')
-            @livewire('charts.barras-accidentes-estado-via')
-            @livewire('charts.barras-accidentes-superficie-rodaduras')
-            @livewire('charts.barras-accidentes-estado-victima')
-            @livewire('charts.barras-accidentes-condicion-climatica')
-            @livewire('charts.barras-accidentes-sector')
-            @livewire('charts.barras-accidentes-area')
-            @livewire('charts.barras-accidentes-geometria')
             @livewire('charts.grafico-pastel-accidentes')
             @livewire('charts.grafico-pastel-clases-accidentes')
+            @livewire('charts.barras-accidentes-estado-via')
+
+            @livewire('charts.barras-accidentes-estado-victima')
 
 
-            @livewire('charts.grafico-barras-accidestes-por-dia')
+            @livewire('charts.barras-accidentes-superficie-rodaduras')
 
-            @livewire('charts.barras-apiladas-tipo-victima-genero')
+            @livewire('charts.barras-accidentes-area')
+            @livewire('charts.barras-accidentes-geometria')
+
+
+
+
+            @livewire('charts.barras-accidentes-condicion-climatica')
+            @livewire('charts.barras-accidentes-sector')
+
+            @livewire('charts.barras-accidentes-iluminacion')
+            @livewire('charts.histograma-accidentes')
 
             @livewire('charts.barras-apiladas-clase-genero')
 
             @livewire('charts.grafico-barras-apiladas')
 
+            @livewire('charts.barras-apiladas-tipo-victima-genero')
 
-            @livewire('charts.histograma-accidentes')
-
+            @livewire('charts.grafico-barras-accidestes-por-dia')
 
             @livewire('charts.grafico-burbujas-accidentes')
 

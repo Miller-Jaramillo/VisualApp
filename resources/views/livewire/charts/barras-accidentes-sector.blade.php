@@ -75,7 +75,7 @@
                         datasets: [{
                             label: 'Cantidad de Accidentes',
                             data: counts,
-                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            backgroundColor: getRandomColor(),
                             borderColor: 'rgba(54, 162, 235, 1)',
                             borderWidth: 1
                         }]
@@ -149,6 +149,17 @@
             }
 
             updateBarrasSector(@json($sectors));
+
+
+            function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
         });
 
         // Agregar evento clic al botón para mostrar/ocultar información
