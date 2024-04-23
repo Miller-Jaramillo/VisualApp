@@ -1,102 +1,79 @@
-# Free Tailwind & Laravel admin dashboard template
+# VisualApp - Sistema de Análisis de Datos de Accidentes
 
-![Mosaic TailwindCSS template preview](https://github.com/cruip/laravel-tailwindcss-admin-dashboard-template/assets/2683512/9d256a65-3b8a-4c15-8a4a-865be9fa9a11)
+VisualApp es una herramienta avanzada para el análisis estadístico de accidentes, diseñada para ayudar a organizaciones y entidades gubernamentales a entender las dinámicas y causas de los accidentes en áreas urbanas y rurales. Utiliza un conjunto de gráficas interactivas y análisis detallados para proporcionar insights valiosos que pueden ser utilizados para mejorar la seguridad vial.
 
-**Mosaic Lite Laravel** is a responsive admin dashboard template built on top of Tailwind CSS and fully coded in Laravel Jetstream. This template is a great starting point for anyone who wants to create a user interface for SaaS products, administrator dashboards, modern web apps, and more.
-Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
+## Características
 
-Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
+- **Análisis Interactivo:** VisualApp permite a los usuarios explorar datos de accidentes a través de diversas visualizaciones, como gráficos de burbujas, barras apiladas, y más.
+- **Filtros por Fecha:** Los usuarios pueden seleccionar rangos de fechas específicos para focalizar los análisis en períodos de tiempo concretos.
+- **Reportes Detallados:** El sistema genera análisis detallados sobre las tendencias de accidentes, tipos de víctimas, y otros aspectos cruciales.
 
-## Live demo
+## Tecnologías Utilizadas
 
-Check a live demo here 👉️ [https://mosaic.cruip.com/](https://mosaic.cruip.com/?template=laravel)
+- **Laravel:** Framework backend para la construcción de la aplicación.
+- **Livewire:** Facilita la creación de interfaces dinámicas sin salir del marco de Laravel.
+- **Tailwind CSS:** Utilizado para el diseño responsive y estilizado de la aplicación.
+- **Alpine.js:** Proporciona la reactividad necesaria para las funciones del lado del cliente.
 
-## Mosaic Pro
+## Requisitos del Sistema
 
-[![Mosaic Pro](https://user-images.githubusercontent.com/2683512/151177961-2ff5b838-3745-48dc-80c8-80b043971483.png)](https://cruip.com/mosaic/)
+- PHP = 8.1
+- Composer = 2.7.1
+- Node = 20.11.0
+- NPM  
+- Servidor MySQL o equivalente para la base de datos
 
-## Design files
+## Instalación
 
-If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3sigqHe
+1. **Clonar el Repositorio:**
+   ```
+   git clone https://github.com/tu-usuario/visualapp.git
+   cd visualapp
+   ```
 
-## Table of contents
+2. **Instalar Dependencias:**
+   ```
+   composer install
+   npm install
+   ```
 
-* [Usage](#usage)
-  * [Setup your .env config file](#setup-your-env-config-file)
-  * [Install Laravel dependencies](#install-laravel-dependencies)
-  * [Migrate the tables](#migrate-the-tables)
-  * [Generate some test data](#generate-some-test-data)
-  * [Compile the front-end](#compile-the-front-end)
-  * [Launch the Laravel backend](#launch-the-Laravel-backend)        
-* [Credits](#credits)
-* [Terms and License](#terms-and-license)
-* [About Us](#about-us)
-* [Stay in the loop](#stay-in-the-loop)
+3. **Configuración del Entorno:**
+   Copia el archivo `.env.example` a `.env` y modifica las variables de entorno según sea necesario, incluyendo las credenciales de la base de datos.
 
-## Usage
+4. **Generar Clave de Aplicación:**
+   ```
+   php artisan key:generate
+   ```
 
-This project was built with [Laravel Jetstream](https://jetstream.laravel.com/) and [Livewire + Blade](https://jetstream.laravel.com/2.x/introduction.html#livewire-blade) as Stack.
+5. **Migraciones y Semillas:**
+   ```
+   php artisan migrate
+   php artisan db:seed
+   ```
 
-### Setup your .env config file
-Make sure to add the database configuration in your .env file such as database name, username, password and port.
+6. **Ejecutar el Servidor:**
+   ```
+   php artisan serve
+   ```
 
-### Install Laravel dependencies
-In the root of your Laravel application, run the ``php composer.phar install`` (or ``composer install``) command to install all of the framework's dependencies.
+## En línea
 
-### Migrate the tables
+Este proyecto está disponible en línea y puede ser accedido en [VisualApp Online](http://visualapp.online).
 
-In order to migrate the tables and setup the bare minimum structure for this app
-to display some data you shoud open your terminal, locate and enter this project
-directory and run the following command
+## Uso
 
-``php artisan migrate``
+### Cargar Datos
 
-### Generate some test data
+Para cargar un archivo Excel con datos de accidentes, asegúrate de que sigue el formato especificado en la sección "Carga de Archivos" de este documento. Accede a la sección de carga en la interfaz de usuario y sigue las instrucciones para subir el archivo.
 
-Once you have all your database tables setup you can then generate some test data
-which will come from our pre-made database table seeders.
-In order to do so, in your terminal run the following command
+### Visualización y Análisis
 
-``php artisan db:seed``
+Explora las diferentes visualizaciones disponibles en el menú de navegación. Puedes seleccionar filtros específicos para ajustar los datos mostrados en las gráficas y obtener los análisis deseados.
 
-N.B. If you run this command twice, all the test data will be duplicated and added to the existing table data, if you want to avoid having duplicate test data please
-make sure to ``truncate`` the following ``datafeeds`` table in your database.
+## Contribuir
 
-### Compile the front-end
+Los pull requests son bienvenidos. Para cambios importantes, por favor abre un issue primero para discutir qué te gustaría cambiar.
 
-In order to compile all the CSS and JS assets for the front-end of this site you need to install NPM dependencies. To do that, open the terminal, type npm install and press the ``Enter`` key.
+## Licencia
 
-Then run ``npm run dev`` in the terminal to run a development server to re-compile static assets when making changes to the template.
-
-When you have done with changes, run ``npm run build`` for compiling and minify for production.
-
-### Launch the Laravel backend
-
-In order to make this Laravel installation work properly on your local machine you
-can run the following command in your terminal window.
-
-``php artisan serve``
-
-You should receive a message similar to this
-``Starting Laravel development server: http://127.0.0.1:8000`` simply copy the URL
-in your browser and you'll be ready to test out your new mosaic laravel app.
-
-
-## Credits
-
-- [Nucleo](https://nucleoapp.com/)
-
-## Terms and License
-
-- License 👉 [https://cruip.com/terms/](https://cruip.com/terms/).
-- Copyright 2022 [Cruip](https://cruip.com/).
-- Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
-- Attribution is not required, although it is really appreciated.
-
-## About Us
-
-We're an Italian developer/designer duo creating high-quality design/code resources for developers, makers, and startups.
-
-## Stay in the loop
-
-If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE) para detalles.
