@@ -2,6 +2,9 @@
 
 VisualApp es una herramienta avanzada para el análisis estadístico de accidentes, diseñada para ayudar a organizaciones y entidades gubernamentales a entender las dinámicas y causas de los accidentes en áreas urbanas y rurales. Utiliza un conjunto de gráficas interactivas y análisis detallados para proporcionar insights valiosos que pueden ser utilizados para mejorar la seguridad vial.
 
+![Ejemplo de Imagen](https://raw.githubusercontent.com/Miller-Jaramillo/v44/main/public/images/visualapp-1.png)
+
+
 ## Características
 
 - **Análisis Interactivo:** VisualApp permite a los usuarios explorar datos de accidentes a través de diversas visualizaciones, como gráficos de burbujas, barras apiladas, y más.
