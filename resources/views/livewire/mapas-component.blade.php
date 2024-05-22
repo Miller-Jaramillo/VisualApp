@@ -60,7 +60,15 @@
     </div>
 
         <!-- Mapa Leaflet -->
-        <div id="map" style="height: 500px;"></div>
+        <div class="  border-2 dark:border-indigo-800 border-indigo-500 max-w-7xl mx-auto rounded-md">
+
+
+            <div class="px-2 py-2">
+                <div id="map" style="height: 500px;"></div>
+            </div>
+
+        </div>
+
 
 </div>
 

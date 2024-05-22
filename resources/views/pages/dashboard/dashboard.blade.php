@@ -47,7 +47,7 @@
 
 
         <!-- Cards -->
-        <div class="grid grid-cols-12 gap-6">
+        <div class="grid grid-cols-12 gap-6 mt-2">
 
             @livewire('charts.grafico-pastel-accidentes')
             @livewire('charts.grafico-pastel-clases-accidentes')
