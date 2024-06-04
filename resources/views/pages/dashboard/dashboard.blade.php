@@ -5,8 +5,6 @@
         <x-dashboard.welcome-banner />
 
 
-
-
         <div id="informacionInicial" style="display: none;">
             @include('introduccion-visualapp')
 
@@ -16,9 +14,6 @@
                 @include('vision-visualapp')
 
             </div>
-
-
-
 
         </div>
 
@@ -80,17 +75,9 @@
 
             @livewire('charts.grafico-burbujas-accidentes')
 
-
-
-
-
-
         </div>
 
-
-
-
-    </div>
+   </div>
 </x-app-layout>
 
 <script>

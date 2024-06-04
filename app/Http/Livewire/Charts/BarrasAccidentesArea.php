@@ -11,7 +11,7 @@ class BarrasAccidentesArea extends Component
     public $areas;
     public $areaConMasAccidentes;
     public $areaConMenosAccidentes;
-public $conteoAreas;
+    public $conteoAreas;
 
 
     protected $listeners = ['yearSelected'];

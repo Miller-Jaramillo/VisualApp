@@ -164,37 +164,17 @@ class UsersTableComponent extends Component
         $this->confirmingUserDeletion = null;
     }
 
-    // cmt: Elimina el usuario
-    public function deleteUser($userId)
-    {
-        $user = User::findOrFail($userId);
-        $currentUser = Auth::user();
-        if ($currentUser->id === $user->created_by) {
-            // -> El usuario actual es el creador del usuario a eliminar
-           // $user->comentarios()->delete();
-          //  $user->likes()->delete();
+
+        // cmt: Elimina el usuario
+        public function deleteUser($userId)
+        {
+            $user = User::findOrFail($userId);
             $user->delete();
-            // -> Actualizar la lista de usuarios después de eliminar al usuario
-            $this->render();
             $this->message = $user->name . ' se ha eliminado correctamente.';
-        } elseif ($currentUser->role_name === 'Super Admin') {
-            // -> El usuario actual se registró a través de la ruta principal y puede eliminar a cualquier usuario
-            //$user->comentarios()->delete();
-           // $user->likes()->delete();
-            $user->delete();
-            // -> Actualizar la lista de usuarios después de eliminar al usuario
             $this->render();
-            $this->message = $user->name . ' se ha eliminado correctamente.';
-        } else {
-            if ($user->role_name == 'Espectador' || $user->role_name == 'Participante') {
-                $this->message = nl2br(" ¡No estas autorizado a eliminar un {$user->role_name}!\nSolicita los permisos con el Super Admin");
-            } else {
-                $this->message = nl2br(" ¡No tiene autorizado eliminar a {$user->name}!\nSolo puedes eliminar a los Administradore que tú has creado");
-            }
+            $this->confirmingUserDeletion = null;
         }
 
-        $this->confirmingUserDeletion = null;
-    }
 
     public function showUser($userId)
     {
